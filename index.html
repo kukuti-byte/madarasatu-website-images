@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Madarasatu Ashabur Rasulullah Sallallahu Alaihi Wasallam Angonkoro Imi</title>
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: #f0f4f8;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header with Background Image */
+        header {
+            position: relative;
+            background: url('header-bg.jpg') no-repeat center center/cover; /* Replace with your header image */
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top:0; left:0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 76, 106, 0.6);
+            z-index: 0;
+        }
+
+        /* School Logo/Image */
+        .school-logo {
+            width: 120px;  /* Adjust size */
+            height: 120px;
+            object-fit: contain;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 3px solid white;
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1, header p {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #08435e;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav a {
+            color: white;
+            font-weight: bold;
+            transition: 0.3s;
+            padding: 5px 10px;
+        }
+
+        nav a:hover {
+            background-color: #ffd700;
+            color: #08435e;
+            border-radius: 5px;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #0b4c6a;
+            font-size: 1.8rem;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: #0b4c6a;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        section p {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Programs Grid */
+        .programs {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+        }
+
+        .program-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background-color: #ffffff;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #0b4c6a;
+            outline: none;
+        }
+
+        .contact-form button {
+            background-color: #0b4c6a;
+            color: white;
+            padding: 14px 22px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #08435e;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b4c6a;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <!-- School Logo -->
+        <img src="school-logo.png" alt="School Logo" class="school-logo"> <!-- Replace school-logo.png with your image -->
+        <h1>Madarasatu Ashabur Rasulullah Sallallahu Alaihi Wasallam Angonkoro Imi</h1>
+        <p>Nurturing Knowledge and Faith in Every Student</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#admission">Admission</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Us</h2>
+            <p>
+                Our Islamic school is dedicated to providing quality education with strong Islamic values.
+                We focus on nurturing knowledgeable, responsible, and righteous students.
+            </p>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs">
+            <h2>Our Programs</h2>
+            <div class="programs">
+                <div class="program-card">
+                    <img src="images/quranic.jpg" alt="Quranic Studies"> <!-- Replace with your image -->
+                    <h3>Quranic Studies</h3>
+                    <p>Deep understanding of the Quran with proper Tajweed and memorization techniques.</p>
+                </div>
+                <div class="program-card">
+                    <img src="images/fiqh.jpg" alt="Islamic Jurisprudence"> <!-- Replace with your image -->
+                    <h3>Islamic Jurisprudence</h3>
+                    <p>Learn Fiqh, Hadith, and other Islamic sciences to build strong faith and ethics.</p>
+                </div>
+                <div class="program-card">
+                    <img src="images/arabic.jpg" alt="Arabic Language"> <!-- Replace with your image -->
+                    <h3>Arabic Language</h3>
+                    <p>Master Arabic to read and understand Islamic texts fluently.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admission Section -->
+        <section id="admission">
+            <h2>Admission</h2>
+            <p>
+                Apply to our school to build knowledge and strong Islamic character. Fill the form below to submit your application or inquiries.
+            </p>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section id="contact">
+            <h2>Contact Us / Apply</h2>
+            <form class="contact-form" action="mailto:your-email@example.com" method="POST" enctype="text/plain">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email" required>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+
+                <label for="message">Reason / Comment</label>
+                <textarea id="message" name="message" rows="5" placeholder="Why do you want to apply to our school?" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Madarasatu Ashabur Rasulullah Sallallahu Alaihi Wasallam Angonkoro Imi. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
