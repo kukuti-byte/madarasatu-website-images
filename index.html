@@ -24,7 +24,7 @@
             color: inherit;
         }
 
-        /* Header with Background Image */
+        /* Header */
         header {
             position: relative;
             background: url('header-bg.jpg') no-repeat center center/cover;
@@ -205,6 +205,18 @@
             background-color: #08435e;
         }
 
+        /* Success Message */
+        #successMessage {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 5px;
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: bold;
+            text-align: center;
+        }
+
         /* Footer */
         footer {
             background-color: #0b4c6a;
@@ -285,7 +297,7 @@
         <section id="contact">
             <h2>Contact Us / Apply</h2>
             <div class="contact-form">
-                <form action="https://formspree.io/f/xpwlnaya" method="POST">
+                <form id="contactForm" action="https://formspree.io/f/xpwlnaya" method="POST">
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Your full name" required>
 
@@ -298,11 +310,15 @@
                     <label for="message">Reason / Comment</label>
                     <textarea id="message" name="message" rows="5" placeholder="Why do you want to apply to our school?" required></textarea>
 
-                    <!-- Custom subject for your email -->
                     <input type="hidden" name="_subject" value="New Application / Contact Form Submission">
 
                     <button type="submit">Send Message</button>
                 </form>
+
+                <!-- Success message -->
+                <div id="successMessage">
+                    🎉 Congratulations! Your email has been sent successfully, your information has been submitted.
+                </div>
             </div>
         </section>
 
@@ -312,6 +328,40 @@
     <footer>
         <p>&copy; 2025 Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja. All Rights Reserved.</p>
     </footer>
+
+    <!-- JavaScript for inline success message -->
+    <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const form = event.target;
+        const action = form.action;
+        const formData = new FormData(form);
+        const successDiv = document.getElementById('successMessage');
+
+        fetch(action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                successDiv.style.display = 'block'; // Show success message
+                form.reset(); // Clear form fields
+                setTimeout(() => {
+                    successDiv.style.display = 'none';
+                }, 5000); // Hide message after 5 seconds
+            } else {
+                alert("⚠ Oops! There was a problem sending your form. Please try again later.");
+            }
+        })
+        .catch(error => {
+            alert("⚠ Oops! There was a problem sending your form. Please try again later.");
+        });
+    });
+    </script>
 
 </body>
 </html>
