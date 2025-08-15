@@ -27,7 +27,7 @@
         /* Header with Background Image */
         header {
             position: relative;
-            background: url('header-bg.jpg') no-repeat center center/cover; /* Replace with your header image */
+            background: url('header-bg.jpg') no-repeat center center/cover;
             height: 400px;
             display: flex;
             flex-direction: column;
@@ -48,9 +48,8 @@
             z-index: 0;
         }
 
-        /* School Logo/Image */
         .school-logo {
-            width: 120px;  /* Adjust size */
+            width: 120px;
             height: 120px;
             object-fit: contain;
             border-radius: 50%;
@@ -227,7 +226,6 @@
 
     <!-- Header -->
     <header>
-        <!-- School Logo -->
         <img src="images/logo1.jpg" alt="School Logo" class="school-logo">
         <h1>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</h1>
         <p>Nurturing Knowledge and Faith in Every Student</p>
@@ -286,24 +284,26 @@
         <!-- Contact Form Section -->
         <section id="contact">
             <h2>Contact Us / Apply</h2>
-            <form action="https://formspree.io/f/xpwlnaya" method="POST">
-                <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" placeholder="Your full name" required>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/xpwlnaya" method="POST">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your full name" required>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your email" required>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Your email" required>
 
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
 
-                <label for="message">Reason / Comment</label>
-                <textarea id="message" name="message" rows="5" placeholder="Why do you want to apply to our school?" required></textarea>
+                    <label for="message">Reason / Comment</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Why do you want to apply to our school?" required></textarea>
 
-                <!-- Custom subject for your email -->
-                <input type="hidden" name="_subject" value="New Application / Contact Form Submission">
+                    <!-- Custom subject for your email -->
+                    <input type="hidden" name="_subject" value="New Application / Contact Form Submission">
 
-                <button type="submit">Send Message</button>
-            </form>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </section>
 
     </main>
