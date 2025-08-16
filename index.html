@@ -5,43 +5,57 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</title>
 <style>
+/* ===== Variables (JS updates these) ===== */
+:root {
+  --topbar-h: 140px;  /* header height (logo + name) */
+  --nav-h: 56px;      /* nav height */
+}
+
 /* ===== Base Reset ===== */
-:root { --nav-h: 64px; } /* JS will update this to the exact height */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
-body { line-height: 1.6; background-color: #f0f4f8; overflow-x: hidden; padding-top: var(--nav-h); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--topbar-h) + var(--nav-h)); }
+body { line-height: 1.6; background-color: #f0f4f8; overflow-x: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 a { text-decoration: none; color: inherit; }
 
-/* ===== Header (Hero) ===== */
+/* ===== Fixed Header (logo + name) ===== */
 header {
-  position: relative;
+  position: fixed; top: 0; left: 0; width: 100%;
   background: url('images/header-bg.jpg') no-repeat center center/cover;
   display: flex; flex-direction: column; justify-content: center; align-items: center;
-  color: white; text-align: center; padding: 20px; padding-bottom: 60px;
+  color: #fff; text-align: center;
+  padding: 18px 12px 26px; /* will shrink on scroll */
+  z-index: 1200;
+  transition: padding 0.28s ease, background-color 0.28s ease;
 }
 header::after {
-  content: ''; position: absolute; inset: 0; background-color: rgba(11,76,106,0.6); z-index: 0;
+  content: ''; position: absolute; inset: 0; background: rgba(11,76,106,0.6); z-index: 0;
 }
 .school-logo {
-  width:120px; height:120px; object-fit: contain; border-radius:50%; margin-bottom:15px;
-  border:3px solid white; position: relative; z-index:1;
+  width: 110px; height: 110px; object-fit: contain; border-radius: 50%;
+  border: 3px solid #fff; margin-bottom: 10px; position: relative; z-index: 1;
+  transition: width 0.28s ease, height 0.28s ease, transform 0.28s ease;
 }
-header h1, header p { position: relative; z-index:1; }
-header h1 { font-size: 2rem; margin-bottom:10px; }
-header p { font-size: 1.2rem; }
+header h1, header p { position: relative; z-index: 1; }
+header h1 { font-size: 1.8rem; margin-bottom: 6px; transition: font-size 0.28s ease; }
+header p { font-size: 1rem; opacity: 0.95; }
 
-/* ===== Navigation (Fixed, auto height) ===== */
+/* ===== Fixed Nav (notification/menu) directly under header ===== */
 nav {
-  position: fixed; top: 0; left: 0; width: 100%;
-  background-color:#08435e; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:12px 10px;
-  z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  position: fixed; top: var(--topbar-h); left: 0; width: 100%;
+  background-color:#08435e; color: #fff;
+  display:flex; flex-wrap: wrap; justify-content: center; gap: 14px; padding: 10px 8px;
+  z-index: 1100;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  transition: top 0.28s ease, padding 0.28s ease, background-color 0.28s ease;
 }
-nav a { color:white; font-weight:bold; transition:0.3s; padding:5px 10px; border-radius:5px; }
+nav a { color:white; font-weight:600; padding:6px 10px; border-radius:6px; transition: background-color 0.25s, color 0.25s; }
 nav a:hover { background-color:#ffd700; color:#08435e; }
 
+/* ===== Main offset (push content below fixed bars) ===== */
+main { padding-top: calc(var(--topbar-h) + var(--nav-h)); }
+
 /* ===== Sections ===== */
-main { /* no fixed padding here; body padding-top handles nav offset */ }
-section { padding:60px 20px; max-width:1000px; margin:0 auto; scroll-margin-top: calc(var(--nav-h) + 10px); }
+section { padding:60px 20px; max-width:1000px; margin:0 auto; }
 section h2 { text-align:center; margin-bottom:25px; color:#0b4c6a; font-size:1.8rem; position:relative; }
 section h2::after { content:''; width:60px; height:3px; background-color:#0b4c6a; display:block; margin:10px auto 0; border-radius:2px; }
 section p { text-align:center; max-width:750px; margin:0 auto; font-size:1.1rem; }
@@ -91,17 +105,38 @@ section p { text-align:center; max-width:750px; margin:0 auto; font-size:1.1rem;
 /* ===== Footer ===== */
 footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 20px; }
 
-/* ===== Responsive ===== */
-@media (max-width:768px) {
-  header h1 { font-size:1.6rem; }
-  header p { font-size:1rem; }
+/* ===== Shrink on Scroll ===== */
+body.scrolled header {
+  padding: 10px 12px 14px;
+  background-color: rgba(10, 61, 86, 0.95);
+}
+body.scrolled .school-logo { width: 70px; height: 70px; transform: translateY(0); }
+body.scrolled header h1 { font-size: 1.35rem; }
+
+/* Nav darkens and tightens a bit */
+body.scrolled nav {
+  background-color: #06354a;
+  padding: 8px 8px;
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 768px) {
+  header h1 { font-size: 1.35rem; }
+  header p { font-size: 0.95rem; }
   .gallery-slider img { height:200px; }
 }
 </style>
 </head>
 <body>
 
-<!-- ===== Nav (fixed) ===== -->
+<!-- ===== Fixed Header (Top) ===== -->
+<header>
+  <img src="images/logo1.jpg" alt="School Logo" class="school-logo">
+  <h1>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</h1>
+  <p>Nurturing Knowledge and Faith in Every Student</p>
+</header>
+
+<!-- ===== Fixed Notification/Menu bar (Under Header) ===== -->
 <nav>
   <a href="#about">About</a>
   <a href="#news">News</a>
@@ -115,13 +150,6 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
   <a href="#contact-details">Contact Details</a>
   <a href="#contact">Contact</a>
 </nav>
-
-<!-- ===== Header (hero) ===== -->
-<header>
-  <img src="images/logo1.jpg" alt="School Logo" class="school-logo">
-  <h1>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</h1>
-  <p>Nurturing Knowledge and Faith in Every Student</p>
-</header>
 
 <main>
   <!-- About -->
@@ -292,15 +320,38 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
 </footer>
 
 <script>
-// ===== Calculate nav height and apply safe offsets =====
+// ===== Helpers: measure and set offsets so nothing overlaps =====
 function setOffsets() {
+  const header = document.querySelector('header');
   const nav = document.querySelector('nav');
-  if (!nav) return;
-  const h = nav.offsetHeight;
-  document.documentElement.style.setProperty('--nav-h', h + 'px');
+  if (!header || !nav) return;
+
+  // Read actual heights
+  const topbarH = header.offsetHeight;
+  const navH = nav.offsetHeight;
+
+  // Update CSS variables
+  document.documentElement.style.setProperty('--topbar-h', topbarH + 'px');
+  document.documentElement.style.setProperty('--nav-h', navH + 'px');
+
+  // Ensure nav sits right under header
+  nav.style.top = topbarH + 'px';
 }
 window.addEventListener('load', setOffsets);
 window.addEventListener('resize', setOffsets);
+
+// ===== Shrink/darken on scroll =====
+let scrolledApplied = false;
+window.addEventListener('scroll', () => {
+  const shouldShrink = window.scrollY > 50;
+  if (shouldShrink !== scrolledApplied) {
+    document.body.classList.toggle('scrolled', shouldShrink);
+    scrolledApplied = shouldShrink;
+    // Recalculate positions after class change
+    // Use rAF so layout has applied before measuring
+    requestAnimationFrame(setOffsets);
+  }
+});
 
 // ===== Gallery Auto Slide =====
 (function(){
