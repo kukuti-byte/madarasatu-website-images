@@ -1,80 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</title>
 <style>
-/* ===== Base Reset ===== */
+/* ===== Layout safety / reset ===== */
+:root{
+  --header-h: 0px;
+  --nav-h: 0px;
+  --combined-h: 0px;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { line-height: 1.6; background-color: #f0f4f8; overflow-x: hidden; scroll-behavior: smooth; }
+html, body {
+  width: 100%;
+  overflow-x: hidden;            /* prevent sideways shaking */
+  overscroll-behavior: none;     /* prevent rubber-band / bounce on mobile */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  background-color: #f0f4f8;
+  color: #0b4c6a;
+}
 a { text-decoration: none; color: inherit; }
-/* ===== Header ===== */
-header { position: relative; background: url('images/header-bg.jpg') no-repeat center center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; padding-bottom: 60px; }
-header::after { content: ''; position: absolute; top:0; left:0; width: 100%; height: 100%; background-color: rgba(11,76,106,0.6); z-index:0; }
-.school-logo { width:120px; height:120px; object-fit: contain; border-radius:50%; margin-bottom:15px; border:3px solid white; position: relative; z-index:1; }
-header h1, header p { position: relative; z-index:1; }
-header h1 { font-size: 2rem; margin-bottom:10px; }
+img { max-width: 100%; display: block; }
+
+/* ===== Header (fixed at top) ===== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: url('images/header-bg.jpg') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  padding-bottom: 60px; /* tall header like your original */
+  z-index: 1200;
+}
+header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(11,76,106,0.6);
+  z-index: 0;
+}
+.school-logo {
+  width: 120px; height: 120px; object-fit: contain; border-radius: 50%;
+  margin-bottom: 15px; border: 3px solid white; position: relative; z-index: 1;
+}
+header h1, header p { position: relative; z-index: 1; }
+header h1 { font-size: 2rem; margin-bottom: 10px; }
 header p { font-size: 1.2rem; }
 
-/* ===== Navigation ===== */
-nav { background-color:#08435e; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:12px 0; position:sticky; top:0; z-index:100; }
-nav a { color:white; font-weight:bold; transition:0.3s; padding:5px 10px; }
-nav a:hover { background-color:#ffd700; color:#08435e; border-radius:5px; }
+/* ===== Navigation (scrolls with page - not fixed) =====
+   We'll use JS to push it visually below the fixed header by applying margin-top.
+*/
+nav {
+  background-color: #08435e;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 12px 0;
+  position: static; /* ensure it scrolls with content */
+  z-index: 100;
+  /* margin-top will be set by JS to match header height so nav appears below header */
+}
+nav a { color: white; font-weight: bold; transition: 0.3s; padding: 5px 10px; }
+nav a:hover { background-color: #ffd700; color: #08435e; border-radius: 5px; }
+
+/* ensure anchors land below header+nav */
+html { scroll-padding-top: var(--combined-h); }
+
+/* ===== Main content offset (will be set by JS to header+nav height) ===== */
+main { padding-top: var(--combined-h); }
 
 /* ===== Sections ===== */
-section { padding:60px 20px; max-width:1000px; margin:0 auto; }
-section h2 { text-align:center; margin-bottom:25px; color:#0b4c6a; font-size:1.8rem; position:relative; }
-section h2::after { content:''; width:60px; height:3px; background-color:#0b4c6a; display:block; margin:10px auto 0; border-radius:2px; }
-section p { text-align:center; max-width:750px; margin:0 auto; font-size:1.1rem; }
+section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+section h2 { text-align: center; margin-bottom: 25px; color: #0b4c6a; font-size: 1.8rem; position: relative; }
+section h2::after { content: ''; width: 60px; height: 3px; background-color: #0b4c6a; display: block; margin: 10px auto 0; border-radius: 2px; }
+section p { text-align: center; max-width: 750px; margin: 0 auto; font-size: 1.1rem; }
 
 /* ===== Programs Grid ===== */
-.programs { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:30px; }
-.program-card { background:white; border-radius:10px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s, box-shadow 0.3s; }
+.programs { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+.program-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); text-align: center; transition: transform 0.3s, box-shadow 0.3s; }
 .program-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
-.program-card img { width:100%; border-radius:8px; margin-bottom:10px; }
+.program-card img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
 
 /* ===== Teachers ===== */
-.teachers { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:30px; }
-.teacher-card { background:white; border-radius:10px; padding:20px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.1); }
-.teacher-card img { width:120px; height:120px; border-radius:50%; margin-bottom:10px; object-fit:cover; }
-.teacher-card .social-icons { margin-top:10px; }
-.teacher-card .social-icons a { margin:0 5px; color:#08435e; font-size:1.2rem; transition:0.3s; }
-.teacher-card .social-icons a:hover { color:#ffd700; }
+.teachers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 30px; }
+.teacher-card { background: white; border-radius: 10px; padding: 20px; text-align: center; box-shadow: 0 6px 18px rgba(0,0,0,0.1); }
+.teacher-card img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 10px; object-fit: cover; }
+.teacher-card .social-icons { margin-top: 10px; }
+.teacher-card .social-icons a { margin: 0 5px; color: #08435e; font-size: 1.2rem; transition: 0.3s; }
+.teacher-card .social-icons a:hover { color: #ffd700; }
 
-/* ===== Gallery Slider ===== */
-.gallery-slider { display:flex; overflow:hidden; gap:10px; margin-top:30px; position:relative; }
-.gallery-slider img { min-width:100%; height:250px; object-fit:cover; border-radius:10px; transition: transform 0.5s; }
+/* ===== Gallery Slider =====
+   Hide all images by default (prevents flash). JS will show the first one.
+*/
+.gallery-slider { display: block; overflow: hidden; gap: 10px; margin-top: 30px; position: relative; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.gallery-slider img { display: none; width: 100%; height: 250px; object-fit: cover; border-radius: 10px; transition: transform 0.5s; }
 
 /* ===== Testimonials ===== */
-.testimonials-container { position:relative; max-width:700px; margin:0 auto; overflow:hidden; }
-.testimonial-card { display:none; background:#fff; padding:20px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.1); text-align:center; }
-.testimonial-card.active { display:block; }
-.testimonial-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(11,76,106,0.7); color:white; border:none; padding:10px; cursor:pointer; border-radius:50%; }
-.testimonial-arrow.prev { left:10px; }
-.testimonial-arrow.next { right:10px; }
-.testimonial-indicators { text-align:center; margin-top:15px; }
-.testimonial-indicators .dot { height:12px; width:12px; margin:0 5px; display:inline-block; background-color:#bbb; border-radius:50%; cursor:pointer; }
-.testimonial-indicators .dot.active { background-color:#08435e; }
+.testimonials-container { position: relative; max-width: 700px; margin: 0 auto; overflow: hidden; }
+.testimonial-card { display: none; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); text-align: center; }
+.testimonial-card.active { display: block; }
 
 /* ===== Facilities & Achievements ===== */
-.facilities, .achievements { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:30px; }
-.facility-card, .achievement-card { background:white; border-radius:10px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.1); text-align:center; }
+.facilities, .achievements { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+.facility-card, .achievement-card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); text-align: center; }
 
 /* ===== Contact Form ===== */
-.contact-form { background-color:#ffffff; padding:35px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.1); max-width:600px; margin:0 auto 50px auto; }
-.contact-form label { display:block; margin-bottom:7px; font-weight:bold; }
-.contact-form input, .contact-form textarea { width:100%; padding:12px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; font-size:1rem; }
-.contact-form input:focus, .contact-form textarea:focus { border-color:#0b4c6a; outline:none; }
-.contact-form button { background-color:#0b4c6a; color:white; padding:14px 22px; border:none; border-radius:5px; font-size:1.1rem; cursor:pointer; transition:0.3s; }
-.contact-form button:hover { background-color:#08435e; }
-#successMessage { display:none; margin-top:15px; padding:12px; border-radius:5px; background-color:#d4edda; color:#155724; font-weight:bold; text-align:center; }
+.contact-form { background-color: #ffffff; padding: 35px; border-radius: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto 50px auto; }
+.contact-form label { display: block; margin-bottom: 7px; font-weight: bold; }
+.contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; }
+.contact-form input:focus, .contact-form textarea:focus { border-color: #0b4c6a; outline: none; }
+.contact-form button { background-color: #0b4c6a; color: white; padding: 14px 22px; border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+.contact-form button:hover { background-color: #08435e; }
+#successMessage { display: none; margin-top: 15px; padding: 12px; border-radius: 5px; background-color: #d4edda; color: #155724; font-weight: bold; text-align: center; }
 
 /* ===== Footer ===== */
-footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 20px; }
+footer { background-color: #0b4c6a; color: white; text-align: center; padding: 25px 20px; margin-top: 30px; }
 
-/* ===== Responsive ===== */
-@media (max-width:768px) { nav { flex-wrap:wrap; justify-content:center; } header h1 { font-size:1.6rem; } header p { font-size:1rem; } .gallery-slider img { height:200px; } }
+/* ===== Responsive tweaks ===== */
+@media (max-width: 768px) {
+  header h1 { font-size: 1.6rem; }
+  header p { font-size: 1rem; }
+  .gallery-slider img { height: 200px; }
+  nav { gap: 8px; padding: 10px 8px; }
+  .school-logo { width: 92px; height: 92px; }
+}
 </style>
 </head>
 <body>
@@ -264,49 +323,112 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
 </main>
 
 <footer>
-<p>&copy; 2025 Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja. All Rights Reserved.</p>
+  <p>&copy; 2025 Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja. All Rights Reserved.</p>
 </footer>
 
 <script>
-// ===== Gallery Auto Slide =====
-let galleryIndex = 0;
-const gallery = document.querySelectorAll('.gallery-slider img');
-function gallerySlide() {
-  gallery.forEach(img => img.style.display = 'none');
-  gallery[galleryIndex].style.display = 'block';
-  galleryIndex = (galleryIndex + 1) % gallery.length;
-}
-gallerySlide();
-setInterval(gallerySlide, 3000);
+/* ===== Layout: measure header & nav, set spacing so nav and content are not hidden ===== */
+function setLayoutOffsets(){
+  const header = document.querySelector('header');
+  const nav = document.querySelector('nav');
+  const root = document.documentElement;
+  const main = document.querySelector('main');
 
-// ===== Testimonials Auto Slide =====
-let testIndex = 0;
-const testimonials = document.querySelectorAll('.testimonial-card');
-function showTestimonial(index) {
-  testimonials.forEach(t => t.classList.remove('active'));
-  testimonials[index].classList.add('active');
-}
-function testimonialSlide() {
-  testIndex = (testIndex + 1) % testimonials.length;
-  showTestimonial(testIndex);
-}
-testimonialSlide();
-setInterval(testimonialSlide, 4000);
+  if(!header || !nav || !main) return;
 
-// ===== Contact Form Success Message =====
-const form = document.getElementById('contactForm');
-const successMsg = document.getElementById('successMessage');
-form.addEventListener('submit', function(e){
-  e.preventDefault();
-  fetch(form.action, {
-    method:'POST',
-    body: new FormData(form),
-    headers: { 'Accept':'application/json' }
-  }).then(response => {
-    if(response.ok){ successMsg.style.display='block'; form.reset(); }
-    else { alert('Oops! Something went wrong.'); }
-  })
-});
+  // Measure actual heights (images may affect header size)
+  const headerH = header.offsetHeight;
+  const navH = nav.offsetHeight;
+  const combined = headerH + navH;
+
+  // Update CSS variables and layout
+  root.style.setProperty('--header-h', headerH + 'px');
+  root.style.setProperty('--nav-h', navH + 'px');
+  root.style.setProperty('--combined-h', combined + 'px');
+
+  // Make nav appear below the fixed header
+  nav.style.marginTop = headerH + 'px';
+
+  // Push main content below header + nav
+  main.style.paddingTop = combined + 'px';
+
+  // Also ensure html anchor scrolls take header+nav into account
+  if (document.documentElement) {
+    // scroll-padding-top for anchor navigation
+    document.documentElement.style.scrollPaddingTop = combined + 'px';
+  }
+}
+// Run on load and resize (images may change header height)
+window.addEventListener('load', setLayoutOffsets);
+window.addEventListener('resize', function(){ setTimeout(setLayoutOffsets, 80); });
+
+/* ===== Gallery Auto Slide ===== */
+(function(){
+  const imgs = Array.from(document.querySelectorAll('.gallery-slider img'));
+  if(!imgs.length) return;
+  let idx = 0;
+  function show(i){
+    imgs.forEach((im, j) => im.style.display = j === i ? 'block' : 'none');
+  }
+  show(0); // show first immediately
+  setInterval(()=> { idx = (idx + 1) % imgs.length; show(idx); }, 3000);
+})();
+
+/* ===== Testimonials Auto Slide ===== */
+(function(){
+  const t = Array.from(document.querySelectorAll('.testimonial-card'));
+  if(!t.length) return;
+  let i = 0;
+  function show(i2){
+    t.forEach((el, j) => el.classList.toggle('active', j === i2));
+  }
+  show(0);
+  setInterval(()=> { i = (i + 1) % t.length; show(i); }, 4000);
+})();
+
+/* ===== Contact Form (Formspree) ===== */
+(function(){
+  const form = document.getElementById('contactForm');
+  const msg = document.getElementById('successMessage');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(resp => {
+      if(resp.ok){
+        msg.style.display = 'block';
+        form.reset();
+        setTimeout(()=> msg.style.display = 'none', 6000);
+      } else {
+        resp.json().then(data => alert((data && data.error) ? data.error : 'Oops! Something went wrong.'))
+        .catch(()=> alert('Oops! Something went wrong.'));
+      }
+    }).catch(()=> alert('Network error — please try again.'));
+  });
+})();
+
+/* ===== Optional: highlight nav link as user scrolls ===== */
+(function(){
+  const links = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+  const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+  if(!links.length || !sections.length) return;
+
+  function highlight(){
+    const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--combined-h')) || 0;
+    let current = sections[0];
+    for(const sec of sections){
+      const rect = sec.getBoundingClientRect();
+      if(rect.top - offset <= 5) current = sec;
+    }
+    links.forEach(link => link.classList.toggle('active', link.getAttribute('href') === ('#' + current.id)));
+  }
+  window.addEventListener('scroll', highlight, {passive:true});
+  window.addEventListener('load', highlight);
+  window.addEventListener('resize', highlight);
+})();
 </script>
 
 </body>
