@@ -290,7 +290,8 @@ function testimonialSlide() {
   testIndex = (testIndex + 1) % testimonials.length;
   showTestimonial(testIndex);
 }
-setInterval(testimonialSlide, 4000); // auto slide only
+testimonialSlide();
+setInterval(testimonialSlide, 4000);
 
 // ===== Contact Form Success Message =====
 const form = document.getElementById('contactForm');
