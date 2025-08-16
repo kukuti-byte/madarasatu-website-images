@@ -88,6 +88,13 @@ footer{background:#0b4c6a;color:white;text-align:center;padding:30px 20px;margin
 footer a{color:white;margin:0 10px;transition:0.3s;}
 footer a:hover{color:#ffd700;}
 
+/* Popup Modal */
+#popupModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);justify-content:center;align-items:center;z-index:1000;}
+#popupModal div{background:white;padding:30px 40px;border-radius:10px;max-width:400px;text-align:center;position:relative;}
+#popupModal h2{margin-bottom:15px;color:#0b4c6a;}
+#popupModal button{margin-top:20px;padding:10px 20px;background:#0b4c6a;color:white;border:none;border-radius:5px;cursor:pointer;}
+#popupModal button:hover{background:#08435e;}
+
 /* Responsive */
 @media(max-width:768px){ nav{flex-direction:column;gap:10px;} .newsletter input{width:100%;margin-bottom:10px;} }
 </style>
@@ -260,9 +267,6 @@ footer a:hover{color:#ffd700;}
 <input type="hidden" name="_subject" value="New Application / Contact Form Submission">
 <button type="submit">Send Message</button>
 </form>
-<div id="successMessage" style="display:none;margin-top:15px;padding:12px;border-radius:5px;background-color:#d4edda;color:#155724;font-weight:bold;text-align:center;">
-🎉 Your information has been submitted successfully!
-</div>
 </div>
 </section>
 
@@ -275,6 +279,15 @@ footer a:hover{color:#ffd700;}
 </div>
 </section>
 
+<!-- Popup Modal -->
+<div id="popupModal">
+  <div>
+    <h2>🎉 Success!</h2>
+    <p>Your message has been sent successfully.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+
 </main>
 
 <!-- Footer -->
@@ -286,19 +299,29 @@ footer a:hover{color:#ffd700;}
 </footer>
 
 <script>
-// Contact Form Submission
-document.getElementById('contactForm').addEventListener('submit', function(event){
+// Contact Form Submission with Popup
+const form = document.getElementById('contactForm');
+const popupModal = document.getElementById('popupModal');
+const closePopup = document.getElementById('closePopup');
+
+form.addEventListener('submit', function(event){
 event.preventDefault();
-const form = event.target;
-const action = form.action;
 const formData = new FormData(form);
-const successDiv = document.getElementById('successMessage');
-fetch(action, { method: form.method, body: formData, headers:{'Accept':'application/json'} })
+fetch(form.action, {
+method: form.method,
+body: formData,
+headers: {'Accept':'application/json'}
+})
 .then(response => {
-if(response.ok){ successDiv.style.display='block'; form.reset(); setTimeout(()=>{successDiv.style.display='none';},5000); }
-else { alert("⚠ There was a problem sending your form."); }
-}).catch(()=>{ alert("⚠ There was a problem sending your form."); });
+if(response.ok){
+popupModal.style.display = 'flex';
+form.reset();
+}else{alert("⚠ There was a problem sending your form.");}
+})
+.catch(()=>{alert("⚠ There was a problem sending your form.");});
 });
+
+closePopup.addEventListener('click', ()=>{popupModal.style.display='none';});
 
 // FAQ toggle
 document.querySelectorAll('.faq-item').forEach(item=>{
@@ -311,20 +334,20 @@ answer.style.display=answer.style.display==='block'?'none':'block';
 // Sliders
 let slideIndex = {gallery:0, testimonial:0};
 function moveSlide(type, direction){
-  const slider = type==='gallery'?document.querySelector('.gallery-slider'):document.querySelector('.testimonial-slider');
-  const slidesContainer = slider.querySelector('.slides');
-  const slides = slidesContainer.children;
-  slideIndex[type] += direction;
-  if(slideIndex[type] >= slides.length) slideIndex[type] = 0;
-  if(slideIndex[type] < 0) slideIndex[type] = slides.length - 1;
-  slidesContainer.style.transform = translateX(-${slideIndex[type]*100}%);
+const slider = type==='gallery'?document.querySelector('.gallery-slider'):document.querySelector('.testimonial-slider');
+const slidesContainer = slider.querySelector('.slides');
+const slides = slidesContainer.children;
+slideIndex[type]+=direction;
+if(slideIndex[type]>=slides.length) slideIndex[type]=0;
+if(slideIndex[type]<0) slideIndex[type]=slides.length-1;
+slidesContainer.style.transform=translateX(-${slideIndex[type]*100}%);
 }
 
 // Auto slide every 5 seconds
 setInterval(()=>{
-  moveSlide('gallery', 1);
-  moveSlide('testimonial', 1);
-}, 5000);
+moveSlide('gallery', 1);
+moveSlide('testimonial', 1);
+},5000);
 </script>
 </body>
 </html>
