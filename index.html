@@ -6,55 +6,30 @@
 <title>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* Reset */
 * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 body { line-height:1.6; background-color:#f0f4f8; scroll-behavior:smooth; }
 
-/* Header */
 header { text-align:center; padding:15px 10px; background-color:#0b4c6a; color:white; }
 header .school-logo { width:100px; height:100px; object-fit:cover; border-radius:50%; border:3px solid white; margin-bottom:8px; }
 
-/* Navigation */
-nav {
-    background-color:#08435e;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-    padding:10px 5px;
-    position:sticky;
-    top:0;
-    z-index:100;
-}
-nav a {
-    color:white;
-    font-weight:bold;
-    padding:6px 10px;
-    text-align:center;
-    white-space:nowrap;
-    border-radius:4px;
-    transition:0.3s;
-}
+nav { background-color:#08435e; display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding:10px 5px; position:sticky; top:0; z-index:100; }
+nav a { color:white; font-weight:bold; padding:6px 10px; text-align:center; white-space:nowrap; border-radius:4px; transition:0.3s; }
 nav a:hover { background-color:#ffd700; color:#08435e; }
 
-/* Sections */
 section { padding:50px 15px; max-width:1000px; margin:0 auto; }
 section h2 { text-align:center; margin-bottom:25px; color:#0b4c6a; font-size:1.8rem; position:relative; }
 section h2::after { content:''; width:60px; height:3px; background-color:#0b4c6a; display:block; margin:10px auto 0; border-radius:2px; }
 section p { text-align:center; max-width:750px; margin:0 auto; font-size:1rem; }
 
-/* Grid sections */
 .programs, .teachers, .facilities, .achievements { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:15px; margin-top:25px; }
 .program-card, .teacher-card, .facility-card, .achievement-card { background:white; border-radius:10px; padding:15px; text-align:center; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
 .program-card:hover, .teacher-card:hover, .facility-card:hover, .achievement-card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
 .program-card img, .teacher-card img, .facility-card img, .achievement-card img { width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:10px; }
 .teacher-card img { height:150px; border-radius:50%; }
 
-/* Gallery */
-.gallery-slider { display:flex; overflow-x:hidden; gap:10px; padding-bottom:10px; scroll-behavior:smooth; }
+.gallery-slider { display:flex; overflow:hidden; gap:10px; scroll-behavior:smooth; }
 .gallery-slider img { width:200px; height:130px; flex-shrink:0; object-fit:cover; border-radius:8px; }
 
-/* Testimonials */
 .testimonials-container { position:relative; max-width:800px; margin:0 auto; }
 .testimonial-card { display:none; background:white; padding:20px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.1); text-align:center; }
 .testimonial-card.active { display:block; }
@@ -65,7 +40,6 @@ section p { text-align:center; max-width:750px; margin:0 auto; font-size:1rem; }
 .testimonial-indicators .dot { display:inline-block; width:12px; height:12px; background-color:#ccc; border-radius:50%; margin:0 5px; cursor:pointer; }
 .testimonial-indicators .dot.active { background-color:#0b4c6a; }
 
-/* Contact Form */
 .contact-form { background-color:#ffffff; padding:25px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.1); max-width:500px; margin:0 auto 50px auto; }
 .contact-form label { display:block; margin-bottom:7px; font-weight:bold; }
 .contact-form input, .contact-form textarea, .contact-form button { width:100%; margin-bottom:12px; font-size:1rem; }
@@ -74,13 +48,10 @@ section p { text-align:center; max-width:750px; margin:0 auto; font-size:1rem; }
 .contact-form button { background-color:#0b4c6a; color:white; padding:12px 20px; border:none; border-radius:5px; font-size:1rem; cursor:pointer; transition:0.3s; }
 .contact-form button:hover { background-color:#08435e; }
 
-/* Success Message */
 #successMessage { display:none; margin-top:12px; padding:10px; border-radius:5px; background-color:#d4edda; color:#155724; font-weight:bold; text-align:center; }
 
-/* Footer */
 footer { background-color:#0b4c6a; color:white; text-align:center; padding:20px 10px; }
 
-/* Responsive */
 @media (max-width:768px){ nav { justify-content:center; gap:5px; } nav a { font-size:0.85rem; padding:5px 6px; } }
 </style>
 </head>
@@ -171,26 +142,16 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:20px 
         <h2>Testimonials</h2>
         <div class="testimonials-container">
             <div class="testimonial-card active">
-                <i class="fas fa-quote-left quote-icon"></i>
                 <p>“The school has helped my child develop strong Islamic morals and academic excellence.”</p>
                 <h4>Fatima S.</h4>
             </div>
             <div class="testimonial-card">
-                <i class="fas fa-quote-left quote-icon"></i>
                 <p>“Teachers are professional and caring. My son loves coming here every day.”</p>
                 <h4>Abdullahi M.</h4>
             </div>
             <div class="testimonial-card">
-                <i class="fas fa-quote-left quote-icon"></i>
                 <p>“Highly recommended school with excellent Quranic and Arabic programs.”</p>
                 <h4>Zainab A.</h4>
-            </div>
-            <button class="testimonial-arrow prev">&#10094;</button>
-            <button class="testimonial-arrow next">&#10095;</button>
-            <div class="testimonial-indicators">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
             </div>
         </div>
     </section>
@@ -239,13 +200,12 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:20px 
         </div>
     </section>
 
-    <!-- Admission -->
+    <!-- Admission / Contact -->
     <section id="admission">
         <h2>Admission</h2>
         <p>Apply to our school to build knowledge and strong Islamic character. Fill the form below to submit your application or inquiries.</p>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
         <h2>Contact / Apply</h2>
         <div class="contact-form">
@@ -277,43 +237,25 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
     this.reset();
 });
 
-// Testimonial slider
+// Testimonials automatic and manual
 let testimonials=document.querySelectorAll('.testimonial-card');
-let dots=document.querySelectorAll('.dot');
 let current=0;
 function showTestimonial(i){
     testimonials.forEach(t=>t.classList.remove('active'));
-    dots.forEach(d=>d.classList.remove('active'));
     testimonials[i].classList.add('active');
-    dots[i].classList.add('active');
 }
-document.querySelector('.next').addEventListener('click', ()=>{
-    current=(current+1)%testimonials.length;
-    showTestimonial(current);
-});
-document.querySelector('.prev').addEventListener('click', ()=>{
-    current=(current-1+testimonials.length)%testimonials.length;
-    showTestimonial(current);
-});
-dots.forEach((dot,i)=>{dot.addEventListener('click',()=>{current=i;showTestimonial(i);});});
+function nextTestimonial(){ current=(current+1)%testimonials.length; showTestimonial(current); }
+setInterval(nextTestimonial,5000); // auto every 5s
 
-// Auto slide testimonials every 5 seconds
-setInterval(()=>{
-    current=(current+1)%testimonials.length;
-    showTestimonial(current);
-},5000);
-
-// Auto slide gallery
-const gallerySlider=document.getElementById('gallerySlider');
-let scrollAmount=0;
+// Gallery infinite scroll
+const gallery=document.getElementById('gallerySlider');
+let scrollPos=0;
 function slideGallery(){
-    scrollAmount += 210; // width+gap
-    if(scrollAmount >= gallerySlider.scrollWidth - gallerySlider.clientWidth){
-        scrollAmount=0;
-    }
-    gallerySlider.scrollTo({left:scrollAmount, behavior:'smooth'});
+    scrollPos+=2; // speed
+    if(scrollPos >= gallery.scrollWidth/2) scrollPos=0;
+    gallery.scrollLeft = scrollPos;
 }
-setInterval(slideGallery,3000);
+setInterval(slideGallery,30);
 </script>
 </body>
 </html>
