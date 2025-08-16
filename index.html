@@ -1,70 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</title>
 <style>
 /* ===== Base Reset ===== */
+:root { --nav-h: 64px; } /* JS will update this to the exact height */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-body { line-height: 1.6; background-color: #f0f4f8; overflow-x: hidden; scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+body { line-height: 1.6; background-color: #f0f4f8; overflow-x: hidden; padding-top: var(--nav-h); }
 a { text-decoration: none; color: inherit; }
 
-/* ===== Header ===== */
-header { 
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  background: url('images/header-bg.jpg') no-repeat center center/cover; 
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
-  color: white; 
-  text-align: center; 
-  padding: 20px; 
-  padding-bottom: 60px; 
-  z-index: 1000;
+/* ===== Header (Hero) ===== */
+header {
+  position: relative;
+  background: url('images/header-bg.jpg') no-repeat center center/cover;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  color: white; text-align: center; padding: 20px; padding-bottom: 60px;
 }
-header::after { 
-  content: ''; 
-  position: absolute; 
-  top:0; 
-  left:0; 
-  width: 100%; 
-  height: 100%; 
-  background-color: rgba(11,76,106,0.6); 
-  z-index:0; 
+header::after {
+  content: ''; position: absolute; inset: 0; background-color: rgba(11,76,106,0.6); z-index: 0;
 }
-.school-logo { 
-  width:120px; height:120px; object-fit: contain; border-radius:50%; 
-  margin-bottom:15px; border:3px solid white; position: relative; z-index:1; 
+.school-logo {
+  width:120px; height:120px; object-fit: contain; border-radius:50%; margin-bottom:15px;
+  border:3px solid white; position: relative; z-index:1;
 }
 header h1, header p { position: relative; z-index:1; }
 header h1 { font-size: 2rem; margin-bottom:10px; }
 header p { font-size: 1.2rem; }
 
-/* ===== Navigation ===== */
-nav { 
-  background-color:#08435e; 
-  display:flex; 
-  flex-wrap:wrap; 
-  justify-content:center; 
-  gap:15px; 
-  padding:12px 0; 
-  position: sticky; 
-  top: 180px; /* keeps nav below header */
-  z-index: 999; 
+/* ===== Navigation (Fixed, auto height) ===== */
+nav {
+  position: fixed; top: 0; left: 0; width: 100%;
+  background-color:#08435e; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:12px 10px;
+  z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-nav a { color:white; font-weight:bold; transition:0.3s; padding:5px 10px; }
-nav a:hover { background-color:#ffd700; color:#08435e; border-radius:5px; }
-
-/* ===== Push content down (so it doesn’t overlap header) ===== */
-main { padding-top: 260px; } /* header height (180px) + nav (80px) */
+nav a { color:white; font-weight:bold; transition:0.3s; padding:5px 10px; border-radius:5px; }
+nav a:hover { background-color:#ffd700; color:#08435e; }
 
 /* ===== Sections ===== */
-section { padding:60px 20px; max-width:1000px; margin:0 auto; }
+main { /* no fixed padding here; body padding-top handles nav offset */ }
+section { padding:60px 20px; max-width:1000px; margin:0 auto; scroll-margin-top: calc(var(--nav-h) + 10px); }
 section h2 { text-align:center; margin-bottom:25px; color:#0b4c6a; font-size:1.8rem; position:relative; }
 section h2::after { content:''; width:60px; height:3px; background-color:#0b4c6a; display:block; margin:10px auto 0; border-radius:2px; }
 section p { text-align:center; max-width:750px; margin:0 auto; font-size:1.1rem; }
@@ -115,16 +92,265 @@ section p { text-align:center; max-width:750px; margin:0 auto; font-size:1.1rem;
 footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 20px; }
 
 /* ===== Responsive ===== */
-@media (max-width:768px) { 
-  nav { flex-wrap:wrap; justify-content:center; top: 150px; } 
-  header h1 { font-size:1.6rem; } 
-  header p { font-size:1rem; } 
-  .gallery-slider img { height:200px; } 
-  main { padding-top: 240px; } 
+@media (max-width:768px) {
+  header h1 { font-size:1.6rem; }
+  header p { font-size:1rem; }
+  .gallery-slider img { height:200px; }
 }
 </style>
 </head>
 <body>
-  <!-- your full body content stays same -->
+
+<!-- ===== Nav (fixed) ===== -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#news">News</a>
+  <a href="#programs">Programs</a>
+  <a href="#admission">Admission</a>
+  <a href="#teachers">Our Teachers</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#facilities">Facilities</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#contact-details">Contact Details</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- ===== Header (hero) ===== -->
+<header>
+  <img src="images/logo1.jpg" alt="School Logo" class="school-logo">
+  <h1>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</h1>
+  <p>Nurturing Knowledge and Faith in Every Student</p>
+</header>
+
+<main>
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p>Our Islamic school is dedicated to providing quality education with strong Islamic values. We focus on nurturing knowledgeable, responsible, and righteous students.</p>
+  </section>
+
+  <!-- News & Updates -->
+  <section id="news">
+    <h2>News & Updates</h2>
+    <div class="programs">
+      <div class="program-card">
+        <h3>New Quranic Program Launched</h3>
+        <p>We are excited to launch an advanced Quranic memorization program starting this term.</p>
+      </div>
+      <div class="program-card">
+        <h3>School Summer Holiday Notice</h3>
+        <p>School will be closed for summer holidays from 15th July to 15th August. Please plan accordingly.</p>
+      </div>
+      <div class="program-card">
+        <h3>Upcoming Parent-Teacher Meeting</h3>
+        <p>Join us on 10th September for the annual parent-teacher meeting to discuss student progress.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programs -->
+  <section id="programs">
+    <h2>Our Programs</h2>
+    <div class="programs">
+      <div class="program-card">
+        <img src="images/quranic.jpg" alt="Quranic Studies">
+        <h3>Quranic Studies</h3>
+        <p>Deep understanding of the Quran with proper Tajweed and memorization techniques.</p>
+      </div>
+      <div class="program-card">
+        <img src="images/fiqh.jpg" alt="Islamic Jurisprudence">
+        <h3>Islamic Jurisprudence</h3>
+        <p>Learn Fiqh, Hadith, and other Islamic sciences to build strong faith and ethics.</p>
+      </div>
+      <div class="program-card">
+        <img src="images/arabic.jpg" alt="Arabic Language">
+        <h3>Arabic Language</h3>
+        <p>Master Arabic to read and understand Islamic texts fluently.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teachers -->
+  <section id="teachers">
+    <h2>Our Teachers</h2>
+    <div class="teachers">
+      <div class="teacher-card">
+        <img src="images/teacher1.jpg" alt="Teacher 1">
+        <h3>Ustadh Ahmed</h3>
+        <p>Quranic Studies Expert</p>
+      </div>
+      <div class="teacher-card">
+        <img src="images/teacher2.jpg" alt="Teacher 2">
+        <h3>Ustadh Ibrahim</h3>
+        <p>Arabic Language Teacher</p>
+      </div>
+      <div class="teacher-card">
+        <img src="images/teacher3.jpg" alt="Teacher 3">
+        <h3>Ustadh Musa</h3>
+        <p>Fiqh & Islamic Studies</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-slider">
+      <img src="images/gallery1.jpg" alt="Gallery 1">
+      <img src="images/gallery2.jpg" alt="Gallery 2">
+      <img src="images/gallery3.jpg" alt="Gallery 3">
+      <img src="images/gallery4.jpg" alt="Gallery 4">
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials-container">
+      <div class="testimonial-card active">
+        <p>“The school has helped my child develop strong Islamic morals and academic excellence.”</p>
+        <h4>Fatima S.</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>“Teachers are professional and caring. My son loves coming here every day.”</p>
+        <h4>Abdullahi M.</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>“Highly recommended school with excellent Quranic and Arabic programs.”</p>
+        <h4>Zainab A.</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Facilities -->
+  <section id="facilities">
+    <h2>Our Facilities & Activities</h2>
+    <div class="facilities">
+      <div class="facility-card">
+        <h3>Madrasa Classrooms</h3>
+        <p>Spacious and well-equipped classrooms for Quranic and academic studies.</p>
+      </div>
+      <div class="facility-card">
+        <h3>Prayer Halls</h3>
+        <p>Separate halls for boys and girls to pray and learn Islamic practices.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <h2>Achievements & Awards</h2>
+    <div class="achievements">
+      <div class="achievement-card">
+        <h3>Quran Competition Winner</h3>
+        <p>Students have won state-level Quran recitation competitions.</p>
+      </div>
+      <div class="achievement-card">
+        <h3>Best Islamic School Award</h3>
+        <p>Recognized for outstanding Islamic and academic teaching excellence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission -->
+  <section id="admission">
+    <h2>Admission</h2>
+    <p>Apply to our school to build knowledge and strong Islamic character. Fill the form below to submit your application or inquiries.</p>
+  </section>
+
+  <!-- Contact Details -->
+  <section id="contact-details">
+    <h2>Contact Details</h2>
+    <p>Email: info@ashabisunnati.ng</p>
+    <p>Phone: +234 801 234 5678</p>
+    <p>Address: Unguwan Koro, Yimi Zuba, Abuja, Nigeria</p>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact">
+    <h2>Contact / Apply</h2>
+    <div class="contact-form">
+      <form id="contactForm" action="https://formspree.io/f/xpwlnaya" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
+        <label for="message">Reason / Comment</label>
+        <textarea id="message" name="message" rows="5" placeholder="Why do you want to apply to our school?" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="successMessage">🎉 Congratulations! Your email has been sent successfully.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja. All Rights Reserved.</p>
+</footer>
+
+<script>
+// ===== Calculate nav height and apply safe offsets =====
+function setOffsets() {
+  const nav = document.querySelector('nav');
+  if (!nav) return;
+  const h = nav.offsetHeight;
+  document.documentElement.style.setProperty('--nav-h', h + 'px');
+}
+window.addEventListener('load', setOffsets);
+window.addEventListener('resize', setOffsets);
+
+// ===== Gallery Auto Slide =====
+(function(){
+  let galleryIndex = 0;
+  const gallery = document.querySelectorAll('.gallery-slider img');
+  if (!gallery.length) return;
+  function gallerySlide() {
+    gallery.forEach(img => img.style.display = 'none');
+    gallery[galleryIndex].style.display = 'block';
+    galleryIndex = (galleryIndex + 1) % gallery.length;
+  }
+  gallerySlide();
+  setInterval(gallerySlide, 3000);
+})();
+
+// ===== Testimonials Auto Slide =====
+(function(){
+  let testIndex = 0;
+  const testimonials = document.querySelectorAll('.testimonial-card');
+  if (!testimonials.length) return;
+  function showTestimonial(index) {
+    testimonials.forEach(t => t.classList.remove('active'));
+    testimonials[index].classList.add('active');
+  }
+  function testimonialSlide() {
+    testIndex = (testIndex + 1) % testimonials.length;
+    showTestimonial(testIndex);
+  }
+  showTestimonial(0);
+  setInterval(testimonialSlide, 4000);
+})();
+
+// ===== Contact Form Success Message =====
+(function(){
+  const form = document.getElementById('contactForm');
+  const successMsg = document.getElementById('successMessage');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    fetch(form.action, {
+      method:'POST',
+      body: new FormData(form),
+      headers: { 'Accept':'application/json' }
+    }).then(response => {
+      if(response.ok){ successMsg.style.display='block'; form.reset(); }
+      else { alert('Oops! Something went wrong.'); }
+    }).catch(()=> alert('Network error. Please try again.'));
+  });
+})();
+</script>
+
 </body>
 </html>
