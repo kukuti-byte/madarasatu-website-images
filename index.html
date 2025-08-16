@@ -6,259 +6,75 @@
 <title>Madarasatu Ashabi-Sunnati Rasulillah Unguwan Koro Yimi Zuba Abuja</title>
 <style>
 /* ===== Base Reset ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-body {
-  line-height: 1.6;
-  background-color: #f0f4f8;
-  overflow-x: hidden; /* prevents horizontal shake */
-  scroll-behavior: smooth;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+body { line-height: 1.6; background-color: #f0f4f8; overflow-x: hidden; scroll-behavior: smooth; }
+a { text-decoration: none; color: inherit; }
 /* ===== Header ===== */
-header {
-  position: relative;
-  background: url('images/header-bg.jpg') no-repeat center center/cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  padding-bottom: 60px; /* extra bottom spacing */
-}
-header::after {
-  content: '';
-  position: absolute;
-  top:0; left:0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(11, 76, 106, 0.6);
-  z-index: 0;
-}
-.school-logo {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  border: 3px solid white;
-  position: relative;
-  z-index: 1;
-}
-header h1, header p { position: relative; z-index: 1; }
-header h1 { font-size: 2rem; margin-bottom: 10px; }
+header { position: relative; background: url('images/header-bg.jpg') no-repeat center center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; padding-bottom: 60px; }
+header::after { content: ''; position: absolute; top:0; left:0; width: 100%; height: 100%; background-color: rgba(11,76,106,0.6); z-index:0; }
+.school-logo { width:120px; height:120px; object-fit: contain; border-radius:50%; margin-bottom:15px; border:3px solid white; position: relative; z-index:1; }
+header h1, header p { position: relative; z-index:1; }
+header h1 { font-size: 2rem; margin-bottom:10px; }
 header p { font-size: 1.2rem; }
 
 /* ===== Navigation ===== */
-nav {
-  background-color: #08435e;
-  display: flex;
-  flex-wrap: wrap; /* allows breaking into new line */
-  justify-content: center;
-  gap: 15px;
-  padding: 12px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-nav a {
-  color: white;
-  font-weight: bold;
-  transition: 0.3s;
-  padding: 5px 10px;
-}
-nav a:hover {
-  background-color: #ffd700;
-  color: #08435e;
-  border-radius: 5px;
-}
+nav { background-color:#08435e; display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:12px 0; position:sticky; top:0; z-index:100; }
+nav a { color:white; font-weight:bold; transition:0.3s; padding:5px 10px; }
+nav a:hover { background-color:#ffd700; color:#08435e; border-radius:5px; }
 
 /* ===== Sections ===== */
-section {
-  padding: 60px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-section h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  color: #0b4c6a;
-  font-size: 1.8rem;
-  position: relative;
-}
-section h2::after {
-  content: '';
-  width: 60px;
-  height: 3px;
-  background-color: #0b4c6a;
-  display: block;
-  margin: 10px auto 0;
-  border-radius: 2px;
-}
-section p { text-align: center; max-width: 750px; margin: 0 auto; font-size: 1.1rem; }
+section { padding:60px 20px; max-width:1000px; margin:0 auto; }
+section h2 { text-align:center; margin-bottom:25px; color:#0b4c6a; font-size:1.8rem; position:relative; }
+section h2::after { content:''; width:60px; height:3px; background-color:#0b4c6a; display:block; margin:10px auto 0; border-radius:2px; }
+section p { text-align:center; max-width:750px; margin:0 auto; font-size:1.1rem; }
 
 /* ===== Programs Grid ===== */
-.programs {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
-}
-.program-card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.program-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
-}
-.program-card img { width: 100%; border-radius: 8px; margin-bottom: 10px; }
+.programs { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:30px; }
+.program-card { background:white; border-radius:10px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s, box-shadow 0.3s; }
+.program-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
+.program-card img { width:100%; border-radius:8px; margin-bottom:10px; }
 
 /* ===== Teachers ===== */
-.teachers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
-}
-.teacher-card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-}
-.teacher-card img {
-  width: 120px; height: 120px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  object-fit: cover;
-}
-.teacher-card .social-icons { margin-top: 10px; }
-.teacher-card .social-icons a {
-  margin: 0 5px;
-  color: #08435e;
-  font-size: 1.2rem;
-  transition: 0.3s;
-}
-.teacher-card .social-icons a:hover { color: #ffd700; }
+.teachers { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-top:30px; }
+.teacher-card { background:white; border-radius:10px; padding:20px; text-align:center; box-shadow:0 6px 18px rgba(0,0,0,0.1); }
+.teacher-card img { width:120px; height:120px; border-radius:50%; margin-bottom:10px; object-fit:cover; }
+.teacher-card .social-icons { margin-top:10px; }
+.teacher-card .social-icons a { margin:0 5px; color:#08435e; font-size:1.2rem; transition:0.3s; }
+.teacher-card .social-icons a:hover { color:#ffd700; }
 
 /* ===== Gallery Slider ===== */
-.gallery-slider {
-  display: flex;
-  overflow: hidden;
-  gap: 10px;
-  margin-top: 30px;
-  position: relative;
-}
-.gallery-slider img {
-  min-width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.5s;
-}
+.gallery-slider { display:flex; overflow:hidden; gap:10px; margin-top:30px; position:relative; }
+.gallery-slider img { min-width:100%; height:250px; object-fit:cover; border-radius:10px; transition: transform 0.5s; }
 
 /* ===== Testimonials ===== */
-.testimonials-container {
-  position: relative;
-  max-width: 700px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-.testimonial-card {
-  display: none;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  text-align: center;
-}
-.testimonial-card.active { display: block; }
-.quote-icon { font-size: 1.5rem; color: #08435e; margin-bottom: 10px; }
-.testimonial-arrow {
-  position: absolute; top: 50%;
-  transform: translateY(-50%);
-  background: rgba(11,76,106,0.7);
-  color: white;
-  border: none; padding: 10px; cursor: pointer;
-  border-radius: 50%;
-}
-.testimonial-arrow.prev { left: 10px; }
-.testimonial-arrow.next { right: 10px; }
-.testimonial-indicators {
-  text-align: center;
-  margin-top: 15px;
-}
-.testimonial-indicators .dot {
-  height: 12px; width: 12px;
-  margin: 0 5px;
-  display: inline-block;
-  background-color: #bbb;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.testimonial-indicators .dot.active { background-color: #08435e; }
+.testimonials-container { position:relative; max-width:700px; margin:0 auto; overflow:hidden; }
+.testimonial-card { display:none; background:#fff; padding:20px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.1); text-align:center; }
+.testimonial-card.active { display:block; }
+.testimonial-arrow { position:absolute; top:50%; transform:translateY(-50%); background:rgba(11,76,106,0.7); color:white; border:none; padding:10px; cursor:pointer; border-radius:50%; }
+.testimonial-arrow.prev { left:10px; }
+.testimonial-arrow.next { right:10px; }
+.testimonial-indicators { text-align:center; margin-top:15px; }
+.testimonial-indicators .dot { height:12px; width:12px; margin:0 5px; display:inline-block; background-color:#bbb; border-radius:50%; cursor:pointer; }
+.testimonial-indicators .dot.active { background-color:#08435e; }
 
 /* ===== Facilities & Achievements ===== */
-.facilities, .achievements {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
-}
-.facility-card, .achievement-card {
-  background: white; border-radius: 10px; padding: 20px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1); text-align: center;
-}
-.facility-card img, .achievement-card img { width: 100%; border-radius: 10px; margin-bottom: 10px; object-fit: cover; }
+.facilities, .achievements { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; margin-top:30px; }
+.facility-card, .achievement-card { background:white; border-radius:10px; padding:20px; box-shadow:0 6px 18px rgba(0,0,0,0.1); text-align:center; }
 
 /* ===== Contact Form ===== */
-.contact-form {
-  background-color: #ffffff;
-  padding: 35px;
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  max-width: 600px;
-  margin: 0 auto 50px auto;
-}
-.contact-form label { display: block; margin-bottom: 7px; font-weight: bold; }
-.contact-form input, .contact-form textarea {
-  width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem;
-}
-.contact-form input:focus, .contact-form textarea:focus {
-  border-color: #0b4c6a; outline: none;
-}
-.contact-form button {
-  background-color: #0b4c6a; color: white; padding: 14px 22px;
-  border: none; border-radius: 5px; font-size: 1.1rem; cursor: pointer; transition: 0.3s;
-}
-.contact-form button:hover { background-color: #08435e; }
+.contact-form { background-color:#ffffff; padding:35px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.1); max-width:600px; margin:0 auto 50px auto; }
+.contact-form label { display:block; margin-bottom:7px; font-weight:bold; }
+.contact-form input, .contact-form textarea { width:100%; padding:12px; margin-bottom:15px; border-radius:5px; border:1px solid #ccc; font-size:1rem; }
+.contact-form input:focus, .contact-form textarea:focus { border-color:#0b4c6a; outline:none; }
+.contact-form button { background-color:#0b4c6a; color:white; padding:14px 22px; border:none; border-radius:5px; font-size:1.1rem; cursor:pointer; transition:0.3s; }
+.contact-form button:hover { background-color:#08435e; }
 #successMessage { display:none; margin-top:15px; padding:12px; border-radius:5px; background-color:#d4edda; color:#155724; font-weight:bold; text-align:center; }
 
 /* ===== Footer ===== */
 footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 20px; }
 
 /* ===== Responsive ===== */
-@media (max-width: 768px) {
-  nav { flex-wrap: wrap; justify-content: center; }
-  header h1 { font-size: 1.6rem; }
-  header p { font-size: 1rem; }
-  .gallery-slider img { height: 200px; }
-}
+@media (max-width:768px) { nav { flex-wrap:wrap; justify-content:center; } header h1 { font-size:1.6rem; } header p { font-size:1rem; } .gallery-slider img { height:200px; } }
 </style>
 </head>
 <body>
@@ -271,6 +87,7 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
 
 <nav>
   <a href="#about">About</a>
+  <a href="#news">News</a>
   <a href="#programs">Programs</a>
   <a href="#admission">Admission</a>
   <a href="#teachers">Our Teachers</a>
@@ -278,6 +95,7 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
   <a href="#testimonials">Testimonials</a>
   <a href="#facilities">Facilities</a>
   <a href="#achievements">Achievements</a>
+  <a href="#contact-details">Contact Details</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -286,6 +104,25 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
   <section id="about">
     <h2>About Us</h2>
     <p>Our Islamic school is dedicated to providing quality education with strong Islamic values. We focus on nurturing knowledgeable, responsible, and righteous students.</p>
+  </section>
+
+  <!-- News & Updates -->
+  <section id="news">
+    <h2>News & Updates</h2>
+    <div class="programs">
+      <div class="program-card">
+        <h3>New Quranic Program Launched</h3>
+        <p>We are excited to launch an advanced Quranic memorization program starting this term.</p>
+      </div>
+      <div class="program-card">
+        <h3>School Summer Holiday Notice</h3>
+        <p>School will be closed for summer holidays from 15th July to 15th August. Please plan accordingly.</p>
+      </div>
+      <div class="program-card">
+        <h3>Upcoming Parent-Teacher Meeting</h3>
+        <p>Join us on 10th September for the annual parent-teacher meeting to discuss student progress.</p>
+      </div>
+    </div>
   </section>
 
   <!-- Programs -->
@@ -392,12 +229,21 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
     </div>
   </section>
 
-  <!-- Admission / Contact -->
+  <!-- Admission -->
   <section id="admission">
     <h2>Admission</h2>
     <p>Apply to our school to build knowledge and strong Islamic character. Fill the form below to submit your application or inquiries.</p>
   </section>
 
+  <!-- Contact Details -->
+  <section id="contact-details">
+    <h2>Contact Details</h2>
+    <p>Email: info@ashabisunnati.ng</p>
+    <p>Phone: +234 801 234 5678</p>
+    <p>Address: Unguwan Koro, Yimi Zuba, Abuja, Nigeria</p>
+  </section>
+
+  <!-- Contact Form -->
   <section id="contact">
     <h2>Contact / Apply</h2>
     <div class="contact-form">
@@ -415,7 +261,6 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
       <div id="successMessage">🎉 Congratulations! Your email has been sent successfully.</div>
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -423,7 +268,7 @@ footer { background-color:#0b4c6a; color:white; text-align:center; padding:25px 
 </footer>
 
 <script>
-/* ===== Gallery Auto Slide ===== */
+// ===== Gallery Auto Slide =====
 let galleryIndex = 0;
 const gallery = document.querySelectorAll('.gallery-slider img');
 function gallerySlide() {
@@ -434,33 +279,35 @@ function gallerySlide() {
 gallerySlide();
 setInterval(gallerySlide, 3000);
 
-/* ===== Testimonials Auto Slide ===== */
+// ===== Testimonials Auto Slide =====
 let testIndex = 0;
-const tests = document.querySelectorAll('.testimonial-card');
-function testSlide() {
-  tests.forEach(t => t.classList.remove('active'));
-  tests[testIndex].classList.add('active');
-  testIndex = (testIndex + 1) % tests.length;
+const testimonials = document.querySelectorAll('.testimonial-card');
+function showTestimonial(index) {
+  testimonials.forEach(t => t.classList.remove('active'));
+  testimonials[index].classList.add('active');
 }
-testSlide();
-setInterval(testSlide, 5000);
+function testimonialSlide() {
+  testIndex = (testIndex + 1) % testimonials.length;
+  showTestimonial(testIndex);
+}
+testimonialSlide();
+setInterval(testimonialSlide, 4000);
 
-/* ===== Contact Form Success Message ===== */
-document.getElementById('contactForm').addEventListener('submit', function(e){
+// ===== Contact Form Success Message =====
+const form = document.getElementById('contactForm');
+const successMsg = document.getElementById('successMessage');
+form.addEventListener('submit', function(e){
   e.preventDefault();
-  const form = e.target;
-  const successDiv = document.getElementById('successMessage');
-  const formData = new FormData(form);
-  fetch(form.action, { method: form.method, body: formData, headers: {'Accept':'application/json'} })
-  .then(resp => {
-    if(resp.ok){
-      successDiv.style.display = 'block';
-      form.reset();
-      setTimeout(()=> successDiv.style.display='none',5000);
-    } else { alert("⚠ Oops! Problem sending form."); }
+  fetch(form.action, {
+    method:'POST',
+    body: new FormData(form),
+    headers: { 'Accept':'application/json' }
+  }).then(response => {
+    if(response.ok){ successMsg.style.display='block'; form.reset(); }
+    else { alert('Oops! Something went wrong.'); }
   })
-  .catch(()=>{ alert("⚠ Oops! Problem sending form."); });
 });
 </script>
+
 </body>
 </html>
